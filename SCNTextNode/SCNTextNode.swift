@@ -6,7 +6,7 @@
 //  Copyright © 2018 Max Cobb. All rights reserved.
 //
 
-import SceneKit.SCNNode
+import SceneKit
 
 public class SCNTextNode: SCNNode {
 	/**
@@ -28,6 +28,24 @@ public class SCNTextNode: SCNNode {
 
 	private var textRepositioner = SCNNode()
 	private var textGeometry: SCNText? = nil
+
+	public var materials: [SCNMaterial] {
+		get {
+			return self.textGeometry?.materials ?? []
+		}
+		set {
+			self.textGeometry?.materials = materials
+		}
+	}
+
+	public var firstMaterial: SCNMaterial? {
+		get {
+			return self.textGeometry?.firstMaterial
+		}
+		set {
+			self.textGeometry?.firstMaterial = firstMaterial
+		}
+	}
 
 	/// Allow the text to be wrapped by the SCNText geometry - Currently forced to `false`
 	private var isWrapped: Bool = false {
